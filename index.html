@@ -2,10 +2,402 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>CV - Merhaba Dünya</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alperen ÇETİNKAYA - Yazılım Mühendisi & Portfolyo</title>
+    <!-- Google Fonts & FontAwesome İkonları -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-color: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigasyon Bar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Bölümü */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1.5rem;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            letter-spacing: -1px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .social-links a {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--accent-glow);
+        }
+
+        /* Genel Bölüm Stilleri */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Kart Yapısı */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Deneyim Timeline */
+        .timeline {
+            position: relative;
+            border-left: 2px solid var(--border-color);
+            padding-left: 2rem;
+            margin-left: 1rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.55rem;
+            top: 0.3rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Skills Progress */
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.1, 0.5, 0.5, 1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Keyframe Animasyonları */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Merhaba, ben Alperen Çetinkaya</h1>
-    <p>Sitem yakında burada olacak!</p>
+
+    <!-- Üst Navigasyon -->
+    <header>
+        <nav>
+            <a href="#" class="logo">AÇ.dev</a>
+            <ul class="nav-links">
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#experience">Deneyim</a></li>
+                <li><a href="#skills">Yetenekler</a></li>
+                <li><a href="#projects">Projeler</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Ana Giriş (Hero) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Merhaba, Ben <span>Alperen ÇETİNKAYA</span></h1>
+            <p>Yazılım Mühendisi | Kurumsal Entegrasyon & Sistem Mimarisi Uzmanı</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/alperencetinkaya" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:ornek@email.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hakkımda -->
+    <section id="about">
+        <h2 class="section-title">Hakkımda</h2>
+        <div class="card">
+            <p>Ölçeklenebilir kurumsal entegrasyonlar, veri mimarileri ve otomasyon sistemleri üzerine çalışan bir Yazılım Mühendisiyim. Karmaşık sistemleri optimize etmek, modern web mimarileri oluşturmak ve veri odaklı çözümler üretmek üzerine odaklanıyorum.</p>
+        </div>
+    </section>
+
+    <!-- Deneyim -->
+    <section id="experience">
+        <h2 class="section-title">Deneyim</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2023 - Günümüz</div>
+                <h3>Kıdemli Entegrasyon & Mimar Mimarisi Uzmanı</h3>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Kurumsal servis otomasyonları, veritabanı optimizasyonları ve uçtan uca mimari entegrasyon süreçlerinin yönetimi.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2021 - 2023</div>
+                <h3>Yazılım Geliştirme Uzmanı</h3>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Backend servis tasarımları, veritabanı yönetimi ve özel Java entegrasyon çözümlerinin geliştirilmesi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yetenekler -->
+    <section id="skills">
+        <h2 class="section-title">Yetenekler</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Teknik Beceriler</h3>
+                <br>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Java / Spring Boot</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Oracle SQL & PL/SQL</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Python & Veri Analizi</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Docker & OpenShift</span><span>75%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projeler -->
+    <section id="projects">
+        <h2 class="section-title">Öne Çıkan Projeler</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Portfolyo Takip Platformu</h3>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Python, Pandas ve Chart.js kullanarak geliştirilmiş finansal veri analizi ve borsa takip aracı.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Kurumsal Entegrasyon Servisi</h3>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Gerçek zamanlı karar verme mekanizmaları ve yüksek erişilebilirlikli servis mimarisi entegrasyonu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Alperen ÇETİNKAYA. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Kaydırma Animasyon Scripti -->
+    <script>
+        // Sayfa kaydırıldıkça progress barların ve elemanların akıcı yüklenmesi
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card, .timeline-item').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
