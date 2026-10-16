@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alperen ÇETİNKAYA - CRM&İş Analisti</title>
+    <title>Alperen ÇETİNKAYA - CRM & İş Analisti</title>
     <!-- Google Fonts & FontAwesome İkonları -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -80,20 +80,21 @@
             color: var(--accent-color);
         }
 
-        /* Hero Bölümü */
+        /* Hero Bölümü (Daha Dolu ve Optimize) */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 1.5rem;
+            padding: 7rem 1.5rem 3rem;
             position: relative;
-            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+            background: radial-gradient(circle at 50% 40%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 800;
             margin-bottom: 0.8rem;
             letter-spacing: -1px;
@@ -108,7 +109,7 @@
             font-size: 1.25rem;
             color: var(--text-secondary);
             max-width: 650px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
             animation: fadeInUp 1s ease-out 0.2s backwards;
         }
 
@@ -142,17 +143,59 @@
             box-shadow: 0 10px 20px var(--accent-glow);
         }
 
+        /* Özet Metrik Kartları (Hero İçi) */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 1rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        /* Aşağı Kaydır Oku */
+        .scroll-down {
+            margin-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+            text-decoration: none;
+        }
+
         /* Genel Bölüm Stilleri */
         section {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 4rem 2rem;
         }
 
         .section-title {
             font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             text-align: center;
             position: relative;
         }
@@ -270,10 +313,17 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
         /* Mobil Uyumluluk */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 2.3rem; }
             .nav-links { display: none; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -292,11 +342,11 @@
         </nav>
     </header>
 
-    <!-- Ana Giriş (Hero) -->
+    <!-- Ana Giriş (Hero + Metrik Kartları) -->
     <section class="hero">
         <div class="hero-content">
             <h1>Merhaba, Ben <span>Alperen ÇETİNKAYA</span></h1>
-            <p>Kıdemli CRM&İş Analisti</p>
+            <p>Kıdemli CRM & İş Analisti</p>
             
             <div class="social-links">
                 <a href="https://github.com/alperencetinkaya" target="_blank"><i class="fab fa-github"></i></a>
@@ -304,6 +354,30 @@
                 <a href="mailto:ornek@email.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
+
+        <!-- Ekranı Zenginleştiren Uzmanlık Özet Kartları -->
+        <div class="hero-stats">
+            <div class="stat-card">
+                <span class="number">Telekom & Bankacılık</span>
+                <span class="label">Yüksek Hacimli Sektör Deneyimi</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">CRM & Kampanya</span>
+                <span class="label">Inbound / Outbound Mimari</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">Sistem Entegrasyonu</span>
+                <span class="label">Veritabanı & Kanal Yönetimi</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">Uçtan Uca</span>
+                <span class="label">Analizden Canlıya Geçiş</span>
+            </div>
+        </div>
+
+        <a href="#about" class="scroll-down" title="Aşağı Kaydır">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
     <!-- Hakkımda -->
@@ -382,7 +456,6 @@
 
     <!-- Kaydırma Animasyon Scripti -->
     <script>
-        // Sayfa kaydırıldıkça progress barların ve elemanların akıcı yüklenmesi
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
